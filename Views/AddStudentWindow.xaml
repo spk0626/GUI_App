@@ -1,0 +1,101 @@
+﻿<Window x:Class="GUI_Project.Views.AddStudentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI_Project.ViewModels"
+        mc:Ignorable="d"
+        Title="{Binding Title,UpdateSourceTrigger=PropertyChanged}" Height="450" Width="720" WindowStartupLocation="CenterScreen" WindowStyle="None"
+        AllowsTransparency="True" Background="Transparent">
+
+    <Window.DataContext>
+        <local:AddStudentVM/>
+    </Window.DataContext>
+    <Border Background="#eefafa" CornerRadius="30">
+        
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            
+            <Grid Margin="0,0,0,426" Grid.RowSpan="2">
+                <Canvas>
+                    <Polygon Points="80,280,250,320,170,420" Fill="#e8f9f8" HorizontalAlignment="Center" Canvas.Top="-266" VerticalAlignment="Top" Canvas.Left="505"/>
+                    <Polygon Points="120,180,0,350,200,350" Fill="#e1f7f6" HorizontalAlignment="Left" Canvas.Top="-168" VerticalAlignment="Top" Canvas.Left="444"/>
+                    <Polygon Points="120,250,0,350,200,450" Fill="#dbf5f4" HorizontalAlignment="Left" Canvas.Top="-95" VerticalAlignment="Top" Canvas.Left="594"/>
+                    <Polygon Points="0,200,50,350,200,250" Fill="#cef2f0" HorizontalAlignment="Center" Canvas.Top="-18" VerticalAlignment="Top" Canvas.Left="394" Height="352"/>
+                    <Polygon Points="150,280,250,320,170,380" Fill="#c7f1ee" HorizontalAlignment="Center" Canvas.Top="-8" VerticalAlignment="Top" Canvas.Left="394"/>
+                    <Polygon Points="120,200,70,350,200,350" Fill="#baedea" HorizontalAlignment="Left" Canvas.Top="114" VerticalAlignment="Top" Canvas.Left="544"/>
+                    <Polygon Points="80,280,250,320,170,420" Fill="#adeae6" HorizontalAlignment="Left" Canvas.Top="79" VerticalAlignment="Top" Canvas.Left="366" Height="414" Width="256"/>
+                </Canvas>
+            </Grid>
+
+            <StackPanel>
+               
+                <TextBlock Text="Add New Student" Grid.Row="1" FontSize="22" FontWeight="SemiBold" Margin="30 20 0 10" 
+                       HorizontalAlignment="Left" Foreground="#18615c"/>
+
+                
+                <Separator Height="1" Grid.Row="2" Background="#18615f" Margin="10 -1 10 10"/>
+            </StackPanel>
+
+            
+            <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="30 10 0 0">
+                <TextBlock Text="Full Name :" FontSize="15" FontWeight="SemiBold"
+                           Foreground="#121518" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="7 10 50 20"/>
+                <TextBox Text="{Binding FullName, UpdateSourceTrigger=PropertyChanged}" Height="20" Width="500" VerticalAlignment="Top" Margin="10 10 0 0" Background="#cef2f0"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="5" Orientation="Horizontal" Margin="30 50 0 0">
+                <TextBlock Text="Registration No. :" FontSize="15" FontWeight="SemiBold"
+                           Foreground="#121518" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="7 10 50 20"/>
+                <TextBox Text="{Binding RegNo, UpdateSourceTrigger=PropertyChanged}" Height="20" Width="500" VerticalAlignment="Top" Margin="-32 10 0 0" Background="#cef2f0"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="6" Orientation="Horizontal" Margin="30 100 0 0">
+                <TextBlock Text="Department :" FontSize="15" FontWeight="SemiBold"
+                           Foreground="#121518" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="7 10 50 20"/>
+                <TextBox x:Name="SelectDepartment" Text="{Binding Department}" Height="20" Width="200" 
+          VerticalAlignment="Top" Margin="-5 10 0 0" Background="#cef2f0" />
+            </StackPanel>
+
+            <StackPanel Grid.Row="7" Orientation="Horizontal" Margin="30 150 0 0">
+                <TextBlock Text="GPA :" FontSize="15" FontWeight="SemiBold"
+                           Foreground="#121518" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="7 10 50 20"/>
+                <TextBox Text="{Binding GPA, UpdateSourceTrigger=PropertyChanged}" Height="20" Width="200" VerticalAlignment="Top" Margin="50 10 0 0" Background="#cef2f0"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="8" Orientation="Horizontal" Margin="20 80 0 0">
+                <Button Style="{StaticResource LoginButton}" Width="150" Command="{Binding GpaCalCommand}">
+                    <StackPanel Orientation="Horizontal">
+                        <Icon:PackIconMaterial Kind="Calculator" VerticalAlignment="Center" Width="11" Height="11" Margin="10" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Calculate GPA" VerticalAlignment="Center" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+
+            <StackPanel Grid.Row="6" Orientation="Horizontal" Margin="290 200 0 0">
+                <Button x:Name="addStudent" Width="80" Style="{StaticResource basicButton}"
+                        Command ="{Binding SaveCommand}">
+                    <StackPanel Orientation="Horizontal">
+                        <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Width="11" Height="11" Margin="10"/>
+                        <TextBlock Text="Save" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+
+            <!--close-->
+            <Button x:Name="CloseStudent" Style="{StaticResource closeButton}" 
+                    Margin="0 0 20 0" Background="#dcdcdc" 
+                    HorizontalAlignment="Right"
+                    Command="{Binding GoBackCommand}">
+                <Icon:PackIconMaterial Kind="CloseBox"/>
+            </Button>
+            
+        </Grid>
+    </Border>
+</Window>

@@ -1,0 +1,162 @@
+﻿<Window x:Class="GUI_Project.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI_Project.ViewModels"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="720" WindowStartupLocation="CenterScreen" WindowStyle="None"
+        AllowsTransparency="True" Background="Transparent">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </Window.Resources>
+    <Window.DataContext>
+        <local:MainWindowVM/>
+    </Window.DataContext>
+
+
+    <Border Background="#eefafa" CornerRadius="30">
+        <Grid>
+<!--Left Menu-->
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="320"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="450"/>
+                </Grid.RowDefinitions>
+
+                <Border Grid.Row="1" CornerRadius="30 0 0 30">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#0d3431" Offset="1"/>
+                            <GradientStop Color="#2aa9a0" Offset="0"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+
+                    <StackPanel>
+
+                        <!--Shapes-->
+                        <Grid>
+                            <Canvas>
+                                <Polygon Points="0,40,230,140,0,250" Fill="#279c94"/>
+                                <Polygon Points="80,280,250,320,170,420" Fill="#18615c" HorizontalAlignment="Center" Canvas.Top="-26" VerticalAlignment="Top"/>
+                            </Canvas>
+                        </Grid>
+
+                        <!--Image-->
+                        <Border Width="170" Height="170" Margin="40 40 40 0" Background="Transparent">
+                            <!--<Rectangle Margin="0,25,0,-25" >
+                                <Rectangle.Fill>
+                                    <ImageBrush ImageSource="C:\Users\testtt\Downloads\GUI_Projectnew\GUI_Project\GUI_Project\Images\f (1).png" Stretch="UniformToFill"/>
+                                </Rectangle.Fill>
+                            </Rectangle>-->
+                        </Border>
+
+                        <!--Title-->
+                        <TextBlock Text="Student Registration System" Foreground="White" FontSize="20" FontWeight="SemiBold" 
+                                   DockPanel.Dock="Top" TextAlignment="Center" Margin="5 0 0 10"/>
+                        <TextBlock Text="Faculty of Engineering" Foreground="#dbf5f4" FontSize="15" FontWeight="SemiBold" 
+                                   DockPanel.Dock="Top" TextAlignment="Center" Margin="5 -5 0 10"/>
+
+                        <!--Seperator-->
+                        <Separator Margin="20 15 20 25" DockPanel.Dock="Top" Height="0.8" Background="#dbf5f4" />
+
+                        <!--Create Account-->
+
+                        <!--<TextBlock Text="Are you an Admin?" Foreground="#dbf5f4" FontSize="14" FontWeight="Light" 
+                                   DockPanel.Dock="Top" TextAlignment="Center" Margin="5 25 0 10"/>
+                        <TextBlock Text="View Users" Foreground="#dbf5f4" FontSize="15" FontWeight="SemiBold" 
+                                   DockPanel.Dock="Top" TextAlignment="Center" Margin="5 0 0 10"/>
+                        <Button x:Name="CreateAcc" Style="{StaticResource basicButton}" Width="170" Margin="-3">
+                            <StackPanel Orientation="Horizontal" Margin="10 3">
+                                <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Width="31" Height="12"/>
+                                <TextBlock Text="Edit Users List"  FontWeight="SemiBold" Margin="30 0 0 0" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>-->
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <!--Sign Up-->
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <StackPanel>
+
+                    <!--close-->
+                    <Button x:Name="Close" Style="{StaticResource closeButton}" 
+                    Margin="15" Background="#dcdcdc" 
+                    HorizontalAlignment="Right"
+                    Click="Close_Click">
+                        <Icon:PackIconMaterial Kind="CloseBox"/>
+                    </Button>
+
+                    <TextBlock x:Name="Title" FontSize="27" FontWeight="Bold" Text="LOGIN"
+                           Margin="20 50 10 0" Foreground="#165b56" HorizontalAlignment="Center"/>
+
+                    <!--Seperator-->
+                    <Separator Margin="40 15 40 25" DockPanel.Dock="Top" Height="0.8" Background="#165b56" />
+                    <TextBlock Text="Log in with Username and Password" Foreground="#0d3431" FontSize="14" FontWeight="Light" 
+                                   DockPanel.Dock="Top" TextAlignment="Center" Margin="5 5 0 10"/>
+                    
+
+                    <!--Fields-->
+                    <!--Username-->
+                    <Border BorderThickness="1" BorderBrush="#acb0af" Margin="70 7" CornerRadius="5" >
+                        <Grid Margin="7 9">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Icon:PackIconMaterial Kind="Account" Margin="5 0 0 0" VerticalAlignment="Center"/>
+                            <TextBlock Text="Username :" Style="{StaticResource textHint}" >
+                              <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" Margin="10 0 0 -5" Width="120" Style="{StaticResource textBox}"/>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+
+                    <!--Password-->
+                    <Border BorderThickness="1" BorderBrush="#acb0af" Margin="70 7" CornerRadius="5" >
+                        <Grid Margin="7 9">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Icon:PackIconMaterial Kind="Lock" Margin="5 0 0 0" VerticalAlignment="Center"/>
+                            <TextBlock Text="Password :" Style="{StaticResource textHint}" HorizontalAlignment="Left" >
+                              <TextBox x:Name="txtPassword" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" Margin="10 0 0 -5" Width="100" Style="{StaticResource textBox}"/>
+                            </TextBlock>
+                            <!--<Button x:Name="Visibility" Style="{StaticResource closeButton}" 
+                                    Margin="0 0 -220 -5" Background="#dcdcdc" 
+                                    HorizontalAlignment="Right"
+                                    Click="Pwd_Visibility">
+                                <Icon:PackIconMaterial Kind="Eye"/>
+                            </Button>-->
+                        </Grid>
+                    </Border>
+
+                    <Button x:Name="Login" Style="{StaticResource LoginButton}" Width="100" Margin="10" Command="{Binding LoginCommand}">
+                        <StackPanel Orientation="Horizontal" Margin="15 3" HorizontalAlignment="Center" >
+                            <TextBlock Text="Login"  FontWeight="SemiBold" Margin="15 0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+
+                    
+                </StackPanel>
+            </Grid>
+
+
+        </Grid>
+    </Border>
+</Window>
